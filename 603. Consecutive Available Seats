@@ -1,0 +1,6 @@
+# Write your MySQL query statement below
+select distinct d1.seat_id
+from Cinema d1 inner join Cinema d2
+on d1.seat_id = d2.seat_id+1 or d1.seat_id = d2.seat_id-1
+where d1.free =1 and d2.free =1
+order by d1.seat_id
