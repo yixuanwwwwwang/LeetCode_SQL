@@ -1,0 +1,22 @@
+# Write your MySQL query statement below
+select seller_id
+from Sales
+group by 1
+having SUM(price) = 
+(select SUM(price) from Sales group by seller_id order by 1 DESC LIMIT 1) 
+
+# Write your MySQL query statement below
+
+select distinct s.buyer_id
+from Sales s join Product p on s.product_id = p.product_id
+where p.product_name = 'S8'
+and s.buyer_id NOT IN 
+(select s.buyer_id
+from Sales s join Product p on s.product_id = p.product_id
+where p.product_name ='iPhone')
+
+# Write your MySQL query statement below
+select s.product_id,p.product_name
+from  Sales s join Product p on p.product_id=s.product_id
+group by s.product_id
+having min(s.sale_date)>='2019-01-01' and max(s.sale_date)<='2019-03-31'
